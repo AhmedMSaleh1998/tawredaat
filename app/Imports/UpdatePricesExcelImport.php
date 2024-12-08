@@ -20,6 +20,8 @@ class UpdatePricesExcelImport implements ToModel
         $name = $row[0];
         $brand = $row[3];
 
+        $oldPrice = (float)str_replace(',', '', $row[1]);
+        $newPrice = (float)str_replace(',', '', $row[2]);
         $product = ShopProduct::when($name, function ($query) use ($name) {
             return $query->whereHas('translations', function ($query) use ($name) {
                 $query->where('name', $name);
@@ -34,9 +36,9 @@ class UpdatePricesExcelImport implements ToModel
         if (!$product) {
             return null;
         }
-  
-        $product->old_price = $row[2] > $row[1] ? null : $row[1];
-        $product->new_price = $row[2];
+
+        $product->old_price = $newPrice > $oldPrice ? null : $oldPrice;
+        $product->new_price = $newPrice;
         $product->save();
         return $product;
     }
