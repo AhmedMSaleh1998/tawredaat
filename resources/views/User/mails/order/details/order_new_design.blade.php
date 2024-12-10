@@ -30,7 +30,7 @@
     </thead>
     <tbody>
         <td>
-            <p style="text-align: right;font-weight:bold;">الاسم : {{ $order->user->name }}</p>
+            <p style="text-align: right;font-weight:bold;">الاسم : {{ $order->user->full_name }}</p>
             <p style="text-align: right;font-weight:bold;">العنوان : {{ $order->address }}</p>
             <p style="text-align: right;font-weight:bold;">الهاتف : {{ $order->user->phone }}</p>
         </td>
