@@ -39,6 +39,7 @@ class UserRfqController extends BaseResponse
                 'company_name' => $request->input('company_name'),
                 'description' => $request->input('description'),
                 'rfq_type' => $request->input('rfq_type'),
+                'city_id'=> $request->input('city_id'),
                 'status' => 'Not Responsed',
             ]);
             if ($request->file('attachments')) {

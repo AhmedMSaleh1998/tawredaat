@@ -36,6 +36,7 @@ class StoreRFQRequest extends FormRequest
             'description' => 'string|max:2000',
             'rfq_type' => 'string|max:255',
             'attachments' => 'sometimes',
+            'city_id' => 'required|exists:cities,id',
         ];
     }
 }
